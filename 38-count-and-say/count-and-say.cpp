@@ -1,27 +1,20 @@
 class Solution {
 public:
     string countAndSay(int n) {
-        string ans = "1";
-
-        for (int i = 1; i < n; i++) {
-            string temp = "";
-
-            for (int j = 0; j < ans.size(); ) {
-                int count = 0;
-                char ch = ans[j];
-
-                while (j < ans.size() && ans[j] == ch) {
-                    count++;
-                    j++;
-                }
-
-                temp += to_string(count);
-                temp += ch;
+        if(n == 1)
+            return "1";
+        
+        string say = countAndSay(n -1);
+        string result = "";
+        for(int i = 0; i < say.length(); i++){
+            char ch = say[i];
+            int count = 1;
+            while(i < say.length()-1 && say[i] == say[i+1]){
+                count++;
+                i++;
             }
-
-            ans = temp;
+            result += to_string(count) + string(1, ch);
         }
-
-        return ans;
+        return result;
     }
 };
