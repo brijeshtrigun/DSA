@@ -1,26 +1,25 @@
 class Solution {
-private:
-double tailPow(double base, long long exp, double acc){
-    if(exp == 0){
-    return acc;
-    }
-    //odd 
-    if(exp %2 == 1)
-    {
-    return tailPow(base * base, exp/2, acc * base);
-}
-return tailPow(base * base, exp/2, acc);
-}
-public : 
-    double myPow(double x, int n) {
-        if(n == 0){
-            return 1;
+public:
+double solve(double x, long long n){
+            if(n == 0){
+                return 1;
+            }
+            double half = solve(x , n/2);
+            if(n  % 2 == 0){
+                return half * half;
+
+            }else{
+                return half*half*x;
+            }
+                 
         }
+    double myPow(double x, int n) {
         long long N = n;
-        if(N < 0){
+        if(n <  0){
             x = 1/x;
             N = -N;
         }
-        return tailPow(x, N, 1.0);
+        return solve(x ,N);
+        
     }
 };
