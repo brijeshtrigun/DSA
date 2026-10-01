@@ -12,10 +12,6 @@ public:
     int rob = nums[idx] + robber(nums , idx+2 , curr);
     int skip = robber(nums , idx+1 , curr);
     return curr[idx] = max(rob , skip);
-
-
-
-
     }
     int rob(vector<int>& nums) {
         vector<int> curr(nums.size()+1,-1);
