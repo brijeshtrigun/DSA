@@ -11,9 +11,9 @@ public:
                 ans[st.top()] = curr;
                 st.pop();
             }
-            if (i < n) 
+            if (i < n)
                 st.push(i);
-            }
-            return ans;
         }
-    };
+        return ans;
+    }
+};
