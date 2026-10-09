@@ -15,22 +15,22 @@ public:
         while (!st.empty()) {
             st.pop();
         }
-        for(int i = n-1; i >= 0; i--){
-            while(!st.empty() && heights[st.top()] >= heights[i]){
+        for (int i = n - 1; i >= 0; i--) {
+            while (!st.empty() && heights[st.top()] >= heights[i]) {
                 st.pop();
             }
             right[i] = st.empty() ? n : st.top();
             st.push(i);
         }
-        while(!st.empty()){
+        while (!st.empty()) {
             st.pop();
         }
         int maxarea = 0;
-         for(int i = 0; i < n; i++){
-            int width = right[i]- left[i]-1;
-            int area = width* heights[i];
+        for (int i = 0; i < n; i++) {
+            int width = right[i] - left[i] - 1;
+            int area = width * heights[i];
             maxarea = max(area, maxarea);
-         }
-         return maxarea;
+        }
+        return maxarea;
     }
 };
