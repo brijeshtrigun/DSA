@@ -13,7 +13,7 @@ public:
     }
 
     bool enQueue(int value) {
-        if (isFull()){
+        if (isFull()) {
             return false;
         }
         rear = (rear + 1) % size;
@@ -23,7 +23,7 @@ public:
     }
 
     bool deQueue() {
-        if (isEmpty()){
+        if (isEmpty()) {
             return false;
         }
         front = (front + 1) % size;
