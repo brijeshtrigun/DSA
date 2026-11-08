@@ -1,15 +1,18 @@
 class Solution {
 public:
-    int minimumTotal(vector<vector<int>>& triangle) {
-        int n = triangle.size();
-
-        for (int i = n - 2; i >= 0; --i) {
-            for (int j = 0; j <= i; ++j) {
-                triangle[i][j] += min(triangle[i + 1][j],
-                                      triangle[i + 1][j + 1]);
-            }
+    int solve(vector<vector<int>>& grid, int i, int j, vector<vector<int>>& dp){
+        int m = grid.size();
+        if(i == m-1){
+            return grid[i][j];
         }
-
-        return triangle[0][0];
+        if(dp[i][j] != INT_MIN) return dp[i][j];
+        int down =  solve(grid, i+1, j, dp);
+        int diagonal = solve(grid, i+1,  j+1, dp);
+        return dp[i][j] = grid[i][j] + min(down, diagonal);
+    }
+    int minimumTotal(vector<vector<int>>& triangle) {
+        int m = triangle.size();
+        vector<vector<int>> dp(m, vector<int>(m , INT_MIN));
+        return solve(triangle, 0, 0, dp);
     }
 };
