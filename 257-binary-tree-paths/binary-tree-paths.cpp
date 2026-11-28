@@ -6,24 +6,25 @@
  *     TreeNode *right;
  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left),
+ * right(right) {}
  * };
  */
 class Solution {
 public:
-    void path(TreeNode* root, string s , vector<string> &ans){
-        if(root == NULL) return;
+    void path(TreeNode* root, string s, vector<string>& ans) {
+        if (root == NULL)
+            return;
         s += to_string(root->val);
-        if(root->left == NULL && root->right == NULL){
+        if (root->left == NULL && root->right == NULL) {
             ans.push_back(s);
             return;
         }
         s += "->";
-        if(root->left != NULL){
+        if (root->left != NULL) {
             path(root->left, s, ans);
-
         }
-        if(root->right != NULL){
+        if (root->right != NULL) {
             path(root->right, s, ans);
         }
     }
@@ -31,6 +32,5 @@ public:
         vector<string> ans;
         path(root, "", ans);
         return ans;
-
     }
 };
